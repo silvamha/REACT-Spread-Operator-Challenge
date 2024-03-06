@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 
 function App() {
-const [item, setItem] = useState("")
+const [inputText, setInputText] = useState("")
 
-function handleChange(e){
-  const [name, value] = e.target
-  setItem((prevChange) =>{
-
-  })
+const handleChange = (e) => {
+  const inputValue = e.target.value;
+  setInputText(inputValue);
 }
+
+const [items, setItems] = useState([])  
+
+const handleClick = () => {
+  setItems((prevItems) => {
+    return [...prevItems, inputText];
+  });
+
+  setInputText("");
+
 
   return (
     <div className="container">
@@ -16,18 +24,23 @@ function handleChange(e){
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input type="text" placeholder="Enter item" onChange={handleChange} value={item} />
-        <button >
+        <input type="text" placeholder="Enter item" value={inputText} />
+        <button onCli >
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          <li>{item}</li>
-        </ul>
+    {items.map((item, index) => (
+        <li 
+        key={index}>{item}
+        </li>
+    ))}
+</ul>
       </div>
     </div>
   );
+}
 }
 
 export default App;
