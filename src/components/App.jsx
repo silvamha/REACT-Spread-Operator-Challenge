@@ -25,7 +25,7 @@ const handleClick = () => {
       </div>
       <div className="form">
         <input type="text" placeholder="Enter item" value={inputText} />
-        <button onCli >
+        <button >
           <span>Add</span>
         </button>
       </div>
